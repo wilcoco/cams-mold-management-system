@@ -7,8 +7,9 @@
     "start": "node src/app.js",
     "dev": "nodemon src/app.js",
     "build": "echo 'No build step required'",
-    "migrate": "node src/migrations/run.js",
-    "seed": "node src/seeders/run.js",
+    "db:sync": "node src/scripts/syncDatabase.js",
+    "db:seed": "node src/scripts/seedData.js",
+    "db:reset": "npm run db:sync && npm run db:seed",
     "test": "jest"
   },
   "keywords": [
