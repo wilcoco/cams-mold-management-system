@@ -69,6 +69,19 @@ const startServer = async () => {
     if (!dbConnected) {
       console.warn('⚠️  Database connection failed. Server will start without database.');
       console.warn('⚠️  Please check DATABASE_URL environment variable.');
+    } else {
+      // 데이터베이스 초기화 (프로덕션 환경에서만 한 번 실행)
+      if (process.env.NODE_ENV === 'production' && process.env.INIT_DB === 'true') {
+        console.log('🔧 Initializing database...');
+        const { sequelize } = require('./config/database');
+        await sequelize.sync({ force: true });
+        console.log('✅ Database tables created');
+        
+        // 시드 데이터 삽입
+        const { seedDatabase } = require('./scripts/seed');
+        await seedDatabase();
+        console.log('✅ Seed data inserted');
+      }
     }
     
     // Start listening
