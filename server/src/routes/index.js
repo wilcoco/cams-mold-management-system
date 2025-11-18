@@ -5,6 +5,7 @@ const router = express.Router();
 const authRoutes = require('./auth');
 const moldRoutes = require('./molds');
 const qrRoutes = require('./qr');
+const inspectionRoutes = require('./inspections');
 
 // API 정보
 router.get('/', (req, res) => {
@@ -28,9 +29,9 @@ router.get('/', (req, res) => {
 router.use('/auth', authRoutes);
 router.use('/molds', moldRoutes);
 router.use('/qr-sessions', qrRoutes);
+router.use('/inspections', inspectionRoutes);
 
 // TODO: 추가 라우트
-// router.use('/inspections', inspectionRoutes);
 // router.use('/users', userRoutes);
 // router.use('/plants', plantRoutes);
 // router.use('/partners', partnerRoutes);
