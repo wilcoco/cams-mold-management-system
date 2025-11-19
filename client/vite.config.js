@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     host: '0.0.0.0',
     port: 3000,
-    allowedHosts: true,
+    allowedHosts: ['cams-client-production.up.railway.app'],
     proxy: {
       '/api': {
         target: process.env.VITE_API_URL || 'http://localhost:3001',
@@ -18,7 +18,7 @@ export default defineConfig({
   preview: {
     host: '0.0.0.0',
     port: process.env.PORT || 3000,
-    allowedHosts: true,
+    allowedHosts: ['cams-client-production.up.railway.app'],
   },
   build: {
     outDir: 'dist',
