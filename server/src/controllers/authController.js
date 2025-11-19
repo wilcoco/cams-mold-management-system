@@ -84,7 +84,7 @@ const login = async (req, res, next) => {
     const refreshToken = generateRefreshToken(user.id);
 
     // 마지막 로그인 시간 업데이트
-    await user.update({ last_login_at: new Date() });
+    await user.update({ last_login: new Date() });
 
     // 응답
     res.json({

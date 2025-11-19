@@ -12,7 +12,7 @@
 
 1. Railway 대시보드에서 "New Project" 클릭
 2. "Deploy from GitHub repo" 선택
-3. `radiohead0803-hash/cams-mold-management-system` 저장소 선택
+3. `wilcoco/cams-mold-management-system` 저장소 선택
 4. `main` 브랜치 선택
 
 ### 3. PostgreSQL 데이터베이스 추가
@@ -38,7 +38,6 @@ JWT_REFRESH_EXPIRES_IN=7d
 
 # Server
 NODE_ENV=production
-PORT=3001
 
 # CORS (프론트엔드 URL로 변경)
 CORS_ORIGIN=https://your-frontend-url.railway.app
@@ -48,6 +47,10 @@ MAX_FILE_SIZE=10485760
 
 # GPS
 GPS_ACCURACY_THRESHOLD=50
+
+# Database Options
+DB_SSL=true
+DB_LOGGING=false
 ```
 
 ### 5. 빌드 설정
@@ -59,7 +62,7 @@ Railway는 자동으로 `package.json`의 스크립트를 감지합니다.
 ```json
 {
   "scripts": {
-    "start": "node src/index.js",
+    "start": "node src/app.js",
     "build": "echo 'No build step required'"
   }
 }
@@ -85,18 +88,9 @@ railway login
 # 프로젝트 연결
 railway link
 
-# 데이터베이스 마이그레이션 실행
-railway run npm run migrate
-```
-
-또는 서버 시작 시 자동 동기화 (개발 환경에서만 권장):
-
-```javascript
-// src/index.js에 추가
-const { syncDatabase } = require('./models');
-
-// 서버 시작 전
-await syncDatabase({ alter: true });
+# 데이터베이스 동기화 및 시드 실행
+railway run npm run db:sync
+railway run npm run db:seed
 ```
 
 ### 8. 배포 확인
@@ -190,7 +184,7 @@ Railway가 자동으로:
 
 ## 📱 현재 배포 상태
 
-✅ **GitHub 저장소**: https://github.com/radiohead0803-hash/cams-mold-management-system
+✅ **GitHub 저장소**: https://github.com/wilcoco/cams-mold-management-system
 
 ✅ **커밋 완료**:
 - docs: 프로젝트 초기 설정 및 문서 작성 완료

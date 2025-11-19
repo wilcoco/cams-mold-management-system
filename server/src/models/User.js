@@ -32,7 +32,7 @@ module.exports = (sequelize, DataTypes) => {
       comment: '전화번호'
     },
     role: {
-      type: DataTypes.ENUM('admin', 'hq_staff', 'partner', 'manufacturer', 'viewer'),
+      type: DataTypes.ENUM('hq_admin', 'hq_manager', 'partner_admin', 'worker', 'viewer'),
       allowNull: false,
       defaultValue: 'viewer',
       comment: '사용자 역할'

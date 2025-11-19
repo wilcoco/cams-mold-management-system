@@ -73,20 +73,20 @@ PORT=3001
 NODE_ENV=development
 
 # CORS
-CORS_ORIGIN=http://localhost:3000
+CORS_ORIGIN=http://localhost:5173
 ```
 
 #### client/.env
 ```env
-REACT_APP_API_URL=http://localhost:3001
+VITE_API_URL=http://localhost:3001
 ```
 
 ### 3. 데이터베이스 마이그레이션
 
 ```bash
 cd server
-npm run migrate
-npm run seed
+npm run db:sync
+npm run db:seed
 ```
 
 ### 4. 개발 서버 실행
@@ -98,7 +98,7 @@ npm run dev
 
 # 터미널 2: 프론트엔드
 cd client
-npm start
+npm run dev
 ```
 
 ## 🚂 Railway 배포
